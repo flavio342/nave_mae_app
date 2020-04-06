@@ -1,20 +1,179 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="home-tab">
+    <ion-grid>
+      <ion-row>
+        <ion-col (click)="set_tab('home')" col-3>
+          <ion-icon *ngIf="tab == 'home'" class="active-tab-icon" name="home"></ion-icon>
+          <ion-icon *ngIf="tab != 'home'" class="inactive-tab-icon" name="home-outline"></ion-icon>
+        </ion-col>
+        <ion-col (click)="set_tab('calendar')" col-3>
+          <ion-icon *ngIf="tab == 'calendar'" class="active-tab-icon" name="calendar"></ion-icon>
+          <ion-icon *ngIf="tab != 'calendar'" class="inactive-tab-icon" name="calendar-outline"></ion-icon>
+        </ion-col>
+        <ion-col (click)="set_tab('notifications')" col-3>
+          <ion-icon *ngIf="tab == 'notifications'" class="active-tab-icon" name="notifications"></ion-icon>
+          <ion-icon *ngIf="tab != 'notifications'" class="inactive-tab-icon" name="notifications-outline"></ion-icon>
+        </ion-col>
+        <ion-col (click)="set_tab('chat')" col-3>
+          <ion-icon *ngIf="tab == 'chat'" class="active-tab-icon" name="chatbox"></ion-icon>
+          <ion-icon *ngIf="tab != 'chat'" class="inactive-tab-icon" name="chatbox-outline"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
+
+  <div (click)="close_popup()" *ngIf="show_popup" class="popup-back">
+    <div class="popup-div">
+      <div class="popup-student-div" *ngIf="popup.type == 'student'">
+        <div *ngFor="let s of popup.students">
+          <div class="popup-item" (click)="setup_data(s.pos, 0)">
+            <img src="{{s.photo}}" class="popup-photo">
+            <div class="popup-text">{{s.name}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="popup-institution-div" *ngIf="popup.type == 'institution'">
+        <div *ngFor="let i of popup.institutions">
+          <div class="popup-item" (click)="setup_data(filter.student.pos, i.pos)">
+            <img src="{{i.photo}}" class="popup-photo">
+            <div class="popup-text">{{i.name}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="popup-event-div" *ngIf="popup.type == 'event'">
+        <div class="popup-event-img-div"><img class="popup-event-img" src="{{popup.event.photo}}" alt=""></div>
+        <div class="popup-event-name">{{popup.event.name}} - {{popup.event.class}}</div>
+        <div class="popup-event-date">{{popup.event.date}}</div>
+        <div class="popup-event-description">{{popup.event.description}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="tab == 'home'" id="home-page">
+    <div class="filter-outer-div">
+      <div (click)="open_filter_popup('student')" class="filer-div">
+        <img class="filter-img" src="{{filter.student.photo}}" alt="">
+        <div class="filter-title">{{filter.student.name}}</div>
+        <ion-icon class="filter-arrow" name="chevron-down-outline"></ion-icon>
+      </div>
+      <div (click)="open_filter_popup('institution')" class="filer-div">
+        <img class="filter-img" src="{{filter.institution.photo}}" alt="">
+        <div class="filter-title">{{filter.institution.name}}</div>
+        <ion-icon class="filter-arrow" name="chevron-down-outline"></ion-icon>
+      </div>
+    </div>
+    <ion-grid class="info-grid">
+      <ion-row>
+        <ion-col col-6>
+          <div class="info-div">
+            <ion-icon class="info-icon" name="star"></ion-icon>
+            <div class="info-value">{{info.avg_grade}}</div>
+            <div class="info-label">Média</div>
+          </div>
+        </ion-col>
+        <ion-col col-6>
+          <div class="info-div">
+            <ion-icon class="info-icon" name="checkmark-circle"></ion-icon>
+            <div class="info-value">{{info.avg_attendance}}</div>
+            <div class="info-label">Presença</div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="info-separator">
+            Aulas
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let c of classes">
+        <ion-col col-6>
+          <div (click)="open_class_page(c[0].id)" class="class-div">
+            <img src="{{c[0].photo}}" class="class-photo">
+            <div class="class-name">{{c[0].name}}</div>
+          </div>
+        </ion-col>
+        <ion-col col-6>
+          <div (click)="open_class_page(c[1].id)" *ngIf="c.length == 2" class="class-div">
+            <img src="{{c[1].photo}}" class="class-photo">
+            <div class="class-name">{{c[1].name}}</div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div *ngIf="tab == 'calendar'" id="calendar-page">
+    <div class="calendar-outer-div">
+      <div>
+        <ion-icon (click)="set_date(date.month-1)" class="calendar-arrow" name="chevron-back-outline"></ion-icon>
+        <div class="date-div">
+          <ion-grid>
+            <ion-row>
+              <ion-col col-12>
+                <div class="date-name">{{date.month_name}}</div>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-12>
+                <div class="date-year">{{date.year}}</div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+        <ion-icon (click)="set_date(date.month+1)" class="calendar-arrow" name="chevron-forward-outline"></ion-icon>
+      </div>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12>
+            <div class="week-day-name">
+              <div class="week-day-inner-name">Dom</div>
+            </div>
+            <div class="week-day-name">
+              <div class="week-day-inner-name">Seg</div>
+            </div>
+            <div class="week-day-name">
+              <div class="week-day-inner-name">Ter</div>
+            </div>
+            <div class="week-day-name">
+              <div class="week-day-inner-name">Qua</div>
+            </div>
+            <div class="week-day-name">
+              <div class="week-day-inner-name">Qui</div>
+            </div>
+            <div class="week-day-name">
+              <div class="week-day-inner-name">Sex</div>
+            </div>
+            <div class="week-day-name">
+              <div class="week-day-inner-name">Sab</div>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let days of calendar.months[date.month].days">
+          <ion-col col-12>
+            <div *ngFor="let day of days" (click)="select_date(day.num, date.month)" class="week-day">
+              <div [class.selected-day]="day.num == date.selected_day && date.selected_month == date.month"
+                [class.event-day]="day.events.length > 0" [class.current-day]="day.num == date.day"
+                class="week-day-inner">{{day.num}}</div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div class="event-div">
+      <div class="event-list-div">
+        <div class="event-list-date">{{date.selected_day}} - {{date.selected_month+1}} - {{date.year}}</div>
+      </div>
+      <div
+        *ngFor="let event of calendar.months[date.selected_month].days[date.selected_day_i][date.selected_day_j].events"
+        class="event-list-div" (click)="open_event_popup(event)">
+        <div class="event-text-div">
+          <div class="event-img-div"><img class="event-img" src="{{event.photo}}" alt=""></div>
+          <div class="event-name">{{event.name}} - {{event.class}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </ion-content>

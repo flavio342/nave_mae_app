@@ -1,0 +1,57 @@
+<ion-content [fullscreen]="true">
+
+  <div id="class-page">
+    <div class="class-outer-div">
+      <div (click)="pop_page()" class="back-button-div">
+        <ion-icon class="back-button" name="arrow-back-outline"></ion-icon>
+      </div>
+      <div class="class-div">
+        <img src="{{class_obj.photo}}" class="class-photo">
+        <div class="class-name">{{class_obj.name}}</div>
+      </div>
+    </div>
+    <ion-grid class="info-grid">
+      <ion-row>
+        <ion-col col-6>
+          <div class="info-div">
+            <ion-icon class="info-icon" name="star"></ion-icon>
+            <div class="info-value">{{info.avg_grade}}</div>
+            <div class="info-label">Média</div>
+          </div>
+        </ion-col>
+        <ion-col col-6>
+          <div class="info-div">
+            <ion-icon class="info-icon" name="checkmark-circle"></ion-icon>
+            <div class="info-value">{{info.avg_attendance}}</div>
+            <div class="info-label">Presença</div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="info-separator">
+            Notas
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let g of grades">
+        <ion-col col-12>
+          <div class="grade-div">
+            <div class="grade-name">
+              <ion-icon class="grade-name-icon" name="document-text-outline"></ion-icon>
+              <div class="grade-name-text">{{g.name}}</div>
+            </div>
+            <div class="grade-point">
+              <ion-icon class="grade-point-icon" name="star"></ion-icon>
+              <div class="grade-point-text">{{g.points}}</div>
+            </div>
+            <div class="grade-feedback">
+              <div class="grade-feedback-label">Observações</div>
+              <div class="grade-feedback-text">{{g.feedback}}</div>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

@@ -24,3 +24,96 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+.container{
+    padding: 25px;
+    text-align: center;
+}
+
+.align-left{
+    text-align: left;
+}
+
+.title{
+    font-size: 35px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 41px;
+    color: #000336;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.simple-input{
+    background-color: white;
+    border-radius: 10px;
+}
+
+.simple-label{
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.simple-input input{
+    padding-left: 20px !important;
+}
+
+.simple-button{
+    width: 70%;
+    padding: 15px;
+    margin: auto;
+    background-color: #035680;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.simple-error{
+    color: red;
+}
+
+.info-grid{
+    text-align: center;
+    min-height: 100vh;
+}
+
+.info-div{
+    background-color: white;
+    width: 80%;
+    margin: 15px auto;
+    border-radius: 30px;
+    padding: 20px;
+    color: #1969F2;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.info-icon{
+    font-size: 30px;
+    display: inline-flex;
+}
+
+.info-value{
+    display: inline-flex;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: bold;
+    padding-left: 5px;
+    position: relative;
+    bottom: 5px;
+}
+
+.info-label{
+    color: black;
+    font-weight: normal;
+    font-size: 17px;
+}
+
+.back-button{
+    font-size: 30px;
+    color: white;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}

@@ -1,0 +1,45 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-grid class="align-left">
+      <ion-row>
+        <ion-col col-6>
+          <div class="title">Login</div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="simple-label">E-mail</div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <ion-input class="simple-input" type="text" [(ngModel)]="form.email" placeholder="Digite aqui..."></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="form_errors && form_errors.email">
+        <ion-col col-12>
+          <div class="simple-error">{{form_errors.email[0]}}</div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="simple-label">Senha</div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <ion-input class="simple-input" type="password" [(ngModel)]="form.password" placeholder="Digite aqui...">
+          </ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="form_errors && form_errors.password">
+        <ion-col col-12>
+          <div class="simple-error">{{form_errors.password[0]}}</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div id="login-button-div">
+    <button ion-button class="simple-button" (click)="do_login()">Próximo</button>
+  </div>
+</ion-content>

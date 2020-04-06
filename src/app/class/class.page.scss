@@ -1,0 +1,102 @@
+#class-page{
+    background-color: #F6FAFF !important;
+}
+
+.class-outer-div{
+    background-color: #1969F2;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    width: 100%;
+    padding: 10px 30px;
+    position: fixed;
+    z-index: 1000;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.class-div{
+    background-color: #5E99FD;
+    width: 70%;
+    margin: 40px auto 30px auto;
+    border-radius: 30px;
+    padding: 20px 10px;
+    color: white;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.class-name{
+    margin-top: 5px;
+}
+
+.info-separator{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    color: black
+}
+
+.info-grid{
+    padding-top: 215px;
+    padding-bottom: 30px;
+}
+
+.grade-div{
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    width: 90%;
+    border-radius: 20px;
+    margin: 10px auto;
+}
+
+.grade-name, .grade-point{
+    margin-bottom: 10px;
+}
+
+.grade-name-icon{
+    display: inline-flex;
+    font-size: 30px;
+    padding: 10px;
+    background-color: #1969F2;
+    color: white;
+    border-radius: 100px;
+}
+
+.grade-name-text{
+    display: inline-flex;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 15px;
+    position: relative;
+    bottom: 18px;
+}
+
+.grade-point-icon{
+    font-size: 40px;
+    display: inline-flex;
+    color: #1969F2;
+}
+
+.grade-point-text{
+    display: inline-flex;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: bold;
+    padding-left: 10px;
+    position: relative;
+    bottom: 5px;
+    color: #1969F2;
+}
+
+.grade-feedback{
+    text-align: left;
+    padding: 5px;
+}
+
+.grade-feedback-label{
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
