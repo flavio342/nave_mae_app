@@ -6,7 +6,7 @@ export const environment = {
   production: false
 };
 
-export const SERVER_URL = 'http://flavio342-58ac0317.localhost.run/';
+export const SERVER_URL = 'http://flavio342-af518b0d.localhost.run/';
 
 /*
  * For easier debugging in development mode, you can import the following file

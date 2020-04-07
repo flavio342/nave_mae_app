@@ -176,4 +176,26 @@
     </div>
   </div>
 
+  <div *ngIf="tab == 'chat'" id="chat-page">
+    <div class="chat-title">Diretoria</div>
+    <div class="chat-div">
+      <div *ngFor="let m of message_list">
+        <div *ngIf="m.from == 'me'"  class="chat-me-div">
+          <div class="chat-me">{{m.msg}}</div>
+        </div>
+        <div *ngIf="m.from == 'you'" class="chat-you-div">
+          <div class="chat-you">{{m.msg}}</div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="chat-input-div">
+      <ion-input class="chat-input simple-input" type="text" [(ngModel)]="message"></ion-input>
+      <div class="chat-send-icon-div">
+        <ion-icon (click)="send_message()" class="chat-send-icon" name="paper-plane-outline"></ion-icon>
+      </div>
+    </div>
+  </div>
+
 </ion-content>

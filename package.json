@@ -31,7 +31,9 @@
     "cordova-plugin-file": "^6.0.2",
     "cordova-sqlite-storage": "5.0.0",
     "core-js": "^2.5.4",
+    "ng-socket-io": "^0.2.4",
     "rxjs": "~6.5.1",
+    "rxjs-compat": "^6.5.5",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
   },
