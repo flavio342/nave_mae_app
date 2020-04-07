@@ -66,7 +66,22 @@ export class HomePage {
   message = ""
 
   message_list = [
-    
+    {
+      msg: "Olá, quando é o ínicio das aulas?",
+      from: "me"
+    },
+    {
+      msg: "Bom dia Fernando, as aulas vão começar oficialmente no dia 05 de fevereiro",
+      from: "you"
+    },
+    {
+      msg: "Bom dia, nós estamos muito preocupados com essa situação do COVID-19. Gostaria de saber se os eventos vão permanecer de acordo com o calendário.",
+      from: "me"
+    },
+    {
+      msg: "Olá Fernando, vamos sim. Acabamos de mandar um anuncio no app falando mais sobre isso, grata.",
+      from: "you"
+    }
   ]
 
   constructor(private socket: Socket, public navCtrl: NavController, private http: HttpClient, private storage: Storage) {
